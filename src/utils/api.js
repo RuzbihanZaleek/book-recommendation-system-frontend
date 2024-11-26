@@ -10,8 +10,7 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    // const token = localStorage.getItem("authToken");
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTczMjU0Njc2MCwiZXhwIjoxNzMyNTUwMzYwfQ.6mBRr-gtySjLmZrg5ZIQkKOA2GNjMCiR-Fqe98GDZbo";
+    const token = localStorage.getItem("authToken");
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
@@ -32,7 +31,7 @@ apiClient.interceptors.response.use(
     }
   },
   (error) => {
-    return Promise.reject(error);
+    return Promise.reject(error.response.data);
   }
 );
 
