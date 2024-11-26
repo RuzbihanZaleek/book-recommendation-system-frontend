@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -11,13 +11,15 @@ import {
   Box,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import BookIcon from "@mui/icons-material/Book";
 import BookImage from "../../assets/book.png";
 import { useState } from "react";
+import { useUser } from "../../context/UserContext";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const { setUserId } = useUser();
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -27,6 +29,12 @@ const Navbar = () => {
   const handleMenuClose = () => {
     setAnchorEl(null);
     setIsMobileMenuOpen(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    setUserId(null);
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -77,14 +85,19 @@ const Navbar = () => {
 
         {/* Desktop buttons */}
         <Box sx={{ display: { xs: "none", md: "block" } }}>
-          <Button color="inherit" component={Link} to="/add-book">
-            Add Book
-          </Button>
           <Button color="inherit" component={Link} to="/library">
             My Library
           </Button>
           <Button color="inherit" component={Link} to="/ai-recommendations">
             AI Recommendations
+          </Button>
+          <Button
+            onClick={handleLogout}
+            color="inherit"
+            component={Link}
+            to="/add-book"
+          >
+            Log Out
           </Button>
         </Box>
 
@@ -94,9 +107,6 @@ const Navbar = () => {
           open={isMobileMenuOpen}
           onClose={handleMenuClose}
         >
-          <MenuItem onClick={handleMenuClose} component={Link} to="/add-book">
-            Add Book
-          </MenuItem>
           <MenuItem onClick={handleMenuClose} component={Link} to="/library">
             My Library
           </MenuItem>
@@ -106,6 +116,9 @@ const Navbar = () => {
             to="/ai-recommendations"
           >
             AI Recommendations
+          </MenuItem>
+          <MenuItem onClick={handleLogout} component={Link} to="/add-book">
+            Log Out
           </MenuItem>
         </Menu>
       </Toolbar>
