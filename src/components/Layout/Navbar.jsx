@@ -33,9 +33,9 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
+    navigate("/login", { replace: true });
     localStorage.removeItem("authToken");
     setUserId(null);
-    navigate("/login", { replace: true });
   };
 
   return (
@@ -96,7 +96,7 @@ const Navbar = () => {
             onClick={handleLogout}
             color="inherit"
             component={Link}
-            to="/add-book"
+            to="/login"
           >
             {NAMES.NAV_BAR.LOGOUT}
           </Button>
