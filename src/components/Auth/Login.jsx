@@ -7,11 +7,12 @@ import Loader from "../Layout/Loader";
 import backgroundImage from "../../assets/bg_image.jpg";
 import { jwtDecode } from "jwt-decode";
 import { useUser } from "../../context/UserContext";
+import { MESSAGES, NAMES } from "../../utils/constants";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const {setUserId} = useUser();
+  const { setUserId } = useUser();
 
   const handleLogin = async (credentials) => {
     setIsLoading(true);
@@ -26,14 +27,14 @@ const Login = () => {
 
       showSweetAlert({
         icon: "success",
-        title: "Login successful!",
+        title: MESSAGES.LOGIN_SUCCESS,
       });
 
       navigate("/", { replace: true });
     } catch (error) {
       showSweetAlert({
         icon: "error",
-        title: error.message || "Login failed!",
+        title: error.message || MESSAGES.LOGIN_FAIL,
       });
     } finally {
       setIsLoading(false);
@@ -49,10 +50,10 @@ const Login = () => {
   ) : (
     <div
       className="flex items-center justify-center h-screen bg-cover bg-center"
-      style={{ backgroundImage:  `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <AuthForm
-        title="Login"
+        title={NAMES.AUTH_FORM.LOG_IN}
         submitHandler={handleLogin}
         switchText="Don't have an account?"
         switchHandler={switchToSignUp}

@@ -11,8 +11,6 @@ import Footer from "./components/Layout/Footer";
 import HomePage from "./pages/HomePage";
 import MyLibraryPage from "./pages/MyLibraryPage";
 import BookDetailsPage from "./pages/BookDetailsPage";
-import AddBookPage from "./pages/AddBookPage";
-import AIRecommendationPage from "./pages/AIRecommendationPage";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/SignUp";
 import ProtectedRoute from "./components/Layout/ProtectedRoute";
@@ -49,12 +47,8 @@ const AppContent = () => {
             element={<ProtectedRoute component={BookDetailsPage} />}
           />
           <Route
-            path="/add-book"
-            element={<ProtectedRoute component={AddBookPage} />}
-          />
-          <Route
             path="/ai-recommendations"
-            element={<ProtectedRoute component={AIRecommendationPage} />}
+            element={<ProtectedRoute component="" />}
           />
         </Routes>
       </main>

@@ -7,6 +7,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { validateForm } from "../../utils/handleAuthFormErrors";
+import { NAMES } from "../../utils/constants";
 
 const AuthForm = ({
   title,
@@ -47,7 +48,7 @@ const AuthForm = ({
     <Box className="flex flex-col items-center gap-6 w-full max-w-md p-6 bg-gray-200 bg-opacity-70 shadow-lg rounded-lg">
       <Typography variant="h4">{title}</Typography>
       <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
-        {title === "Sign Up" && (
+        {title === NAMES.AUTH_FORM.SIGN_UP && (
           <TextField
             label="Username"
             name="username"
@@ -97,7 +98,9 @@ const AuthForm = ({
           className="text-purple-800 cursor-pointer hover:underline text-lg font-bold"
           onClick={switchHandler}
         >
-          {title === "Login" ? "Sign Up" : "Login"}
+          {title === NAMES.AUTH_FORM.LOG_IN
+            ? NAMES.AUTH_FORM.SIGN_UP
+            : NAMES.AUTH_FORM.LOG_IN}
         </span>
       </Typography>
     </Box>

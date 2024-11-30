@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { handleApiError } from "../utils/handleApiError";
 import { showSweetAlert } from "../utils/sweetAlertUtil";
 import Swal from "sweetalert2";
+import { MESSAGES, NAMES } from "../utils/constants";
 
 const MyLibraryPage = () => {
   const [books, setBooks] = useState([]);
@@ -44,16 +45,15 @@ const MyLibraryPage = () => {
     navigate(`/books/${id}`, { state: { isEditing: true } });
   };
 
-
   const onRemoveFromLibrary = async (bookId) => {
     try {
       const result = await Swal.fire({
-        title: "Are you sure?",
-        text: "Do you want to remove this book from your library?",
+        title: MESSAGES.BOOK_REMOVE_SURE,
+        text: MESSAGES.BOOK_REMOVE_CONFIRM_MESSAGE,
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Yes, remove it!",
-        cancelButtonText: "Cancel",
+        confirmButtonText: MESSAGES.BOOK_REMOVE_CONFIRM,
+        cancelButtonText: NAMES.BOOK.CANCEL_BUTTON,
       });
 
       if (result.isConfirmed) {
@@ -63,8 +63,8 @@ const MyLibraryPage = () => {
         );
         showSweetAlert({
           icon: "success",
-          title: "Book Removed",
-          text: "The book has been removed from your library.",
+          title: MESSAGES.BOOK_REMOVE_SUCCESS,
+          text: MESSAGES.BOOK_REMOVE_SUCCESS_MESSAGE,
         });
       }
     } catch (err) {
@@ -80,7 +80,7 @@ const MyLibraryPage = () => {
   return (
     <div className="p-10 md:px-28">
       <Typography variant="h4" gutterBottom sx={{ mt: 3 }}>
-        My Library
+        {NAMES.NAV_BAR.MY_LIBRARY}
       </Typography>
       {books.length ? (
         <Grid container spacing={3}>

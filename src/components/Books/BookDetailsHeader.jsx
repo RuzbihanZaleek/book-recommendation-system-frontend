@@ -8,6 +8,7 @@ import {
   MenuItem,
   Rating,
 } from "@mui/material";
+import { NAMES } from "../../utils/constants";
 
 const BookDetailsHeader = ({
   book,
@@ -57,13 +58,13 @@ const BookDetailsHeader = ({
           {bookData.description}
         </Typography>
         <Typography variant="h6" sx={{ marginBottom: 2 }}>
-          <strong>Author:</strong> {bookData.author}
+          <strong>{NAMES.BOOK.AUTHOR}:</strong> {bookData.author}
         </Typography>
         <Typography variant="body1" sx={{ marginBottom: 2 }}>
-          <strong>Genre:</strong> {bookData.genre}
+          <strong>{NAMES.BOOK.GENRE}:</strong> {bookData.genre}
         </Typography>
         <Typography variant="body1">
-          <strong>Published Date:</strong>{" "}
+          <strong>{NAMES.BOOK.PUBLISHED_DATE}:</strong>{" "}
           {new Date(bookData.published_date).toLocaleDateString()}
         </Typography>
 
@@ -72,7 +73,7 @@ const BookDetailsHeader = ({
           <Box>
             <Box sx={{ marginTop: 2 }}>
               <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                <strong>Status:</strong>
+                <strong>{NAMES.BOOK.STATUS}:</strong>
               </Typography>
               <Box>
                 <Select
@@ -91,14 +92,14 @@ const BookDetailsHeader = ({
                     color="success"
                     sx={{ marginRight: 2 }}
                   >
-                    Save
+                    {NAMES.BOOK.SAVE_BUTTON}
                   </Button>
                   <Button
                     onClick={() => setEditMode(false)}
                     variant="outlined"
                     color="error"
                   >
-                    Cancel
+                    {NAMES.BOOK.CANCEL_BUTTON}
                   </Button>
                 </Box>
               </Box>
@@ -110,7 +111,7 @@ const BookDetailsHeader = ({
                   variant="contained"
                   color="secondary"
                 >
-                  Add Review
+                  {NAMES.BOOK.ADD_REVIEW}
                 </Button>
               </Box>
             )}
@@ -121,7 +122,7 @@ const BookDetailsHeader = ({
         {averageRating !== null && (
           <Box sx={{ display: "flex", alignItems: "center", marginTop: 2 }}>
             <Typography variant="body1" sx={{ marginRight: 1 }}>
-              <strong>Average Rating:</strong>
+              <strong>{NAMES.BOOK.AVERAGE_RATING}:</strong>
             </Typography>
             <Rating
               value={parseFloat(averageRating)}

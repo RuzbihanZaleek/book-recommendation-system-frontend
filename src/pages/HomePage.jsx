@@ -7,6 +7,7 @@ import { addBookToLibrary, fetchUserLibrary } from "../api/libraryApi";
 import { showSweetAlert } from "../utils/sweetAlertUtil";
 import Loader from "../components/Layout/Loader";
 import { handleApiError } from "../utils/handleApiError";
+import { MESSAGES, VALIDATIONS } from "../utils/constants";
 
 const HomePage = () => {
   const [books, setBooks] = useState([]);
@@ -56,8 +57,8 @@ const HomePage = () => {
       await addBookToLibrary(bookId);
       showSweetAlert({
         icon: "success",
-        title: "Book Added",
-        text: "The book added to your library!",
+        title: MESSAGES.BOOK_ADDED,
+        text: MESSAGES.BOOK_ADDED_MESSAGE,
       });
 
       // Update the book's inLibrary status
@@ -68,7 +69,7 @@ const HomePage = () => {
       );
     } catch (err) {
       console.error(err.message);
-      handleApiError(err, "info", "Already Exists");
+      handleApiError(err, "info", VALIDATIONS.ALREADY_EXISTS);
     }
   };
 

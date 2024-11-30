@@ -12,6 +12,7 @@ import {
 import { createReview } from "../../api/reviewApi";
 import { showSweetAlert } from "../../utils/sweetAlertUtil";
 import { handleApiError } from "../../utils/handleApiError";
+import { MESSAGES, NAMES } from "../../utils/constants";
 
 const AddReviewDialog = ({
   open,
@@ -47,8 +48,8 @@ const AddReviewDialog = ({
 
       showSweetAlert({
         icon: "success",
-        title: "Review Added",
-        text: "Your review has been added successfully!",
+        title: MESSAGES.REVIEW_SUCCESS,
+        text: MESSAGES.REVIEW_SUCCESS_MESSAGE,
       });
     } catch (err) {
       handleApiError(err);
@@ -74,7 +75,7 @@ const AddReviewDialog = ({
             slotProps={{}}
             multiline
             rows={3}
-            label="Write your review"
+            label={MESSAGES.REVIEW_WRITE}
             variant="outlined"
             value={reviewContent}
             onChange={handleReviewChange}
@@ -93,7 +94,7 @@ const AddReviewDialog = ({
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="error" variant="contained">
-          Cancel
+          {NAMES.BOOK.CANCEL_BUTTON}
         </Button>
         <Button
           onClick={handleAddReview}
@@ -101,7 +102,7 @@ const AddReviewDialog = ({
           variant="contained"
           disabled={!reviewContent || reviewRating === 0}
         >
-          Submit
+          {NAMES.BOOK.SUBMIT_BUTTON}
         </Button>
       </DialogActions>
     </Dialog>

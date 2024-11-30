@@ -14,6 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import BookImage from "../../assets/book.png";
 import { useState } from "react";
 import { useUser } from "../../context/UserContext";
+import { NAMES } from "../../utils/constants";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -69,7 +70,7 @@ const Navbar = () => {
           </Box>
           <Box sx={{ display: { xs: "none", md: "block" } }}>
             <Link to="/" className="text-white no-underline">
-              Book Recommendation System
+              {NAMES.NAV_BAR.TITLE}
             </Link>
           </Box>
         </Typography>
@@ -86,10 +87,10 @@ const Navbar = () => {
         {/* Desktop buttons */}
         <Box sx={{ display: { xs: "none", md: "block" } }}>
           <Button color="inherit" component={Link} to="/library">
-            My Library
+            {NAMES.NAV_BAR.MY_LIBRARY}
           </Button>
           <Button color="inherit" component={Link} to="/ai-recommendations">
-            AI Recommendations
+            {NAMES.NAV_BAR.AI_RECOMMENDATIONS}
           </Button>
           <Button
             onClick={handleLogout}
@@ -97,7 +98,7 @@ const Navbar = () => {
             component={Link}
             to="/add-book"
           >
-            Log Out
+            {NAMES.NAV_BAR.LOGOUT}
           </Button>
         </Box>
 
@@ -108,17 +109,17 @@ const Navbar = () => {
           onClose={handleMenuClose}
         >
           <MenuItem onClick={handleMenuClose} component={Link} to="/library">
-            My Library
+            {NAMES.NAV_BAR.MY_LIBRARY}
           </MenuItem>
           <MenuItem
             onClick={handleMenuClose}
             component={Link}
             to="/ai-recommendations"
           >
-            AI Recommendations
+            {NAMES.NAV_BAR.AI_RECOMMENDATIONS}
           </MenuItem>
           <MenuItem onClick={handleLogout} component={Link} to="/add-book">
-            Log Out
+            {NAMES.NAV_BAR.LOGOUT}
           </MenuItem>
         </Menu>
       </Toolbar>

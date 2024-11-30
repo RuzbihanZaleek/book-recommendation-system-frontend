@@ -12,6 +12,7 @@ import AddReviewDialog from "../components/Reviews/AddReviewDialog";
 import ReviewCarousel from "../components/Reviews/ReviewCarousel";
 import BookDetailsHeader from "../components/Books/BookDetailsHeader";
 import { useUser } from "../context/UserContext";
+import { MESSAGES } from "../utils/constants";
 
 const BookDetailsPage = () => {
   const { id } = useParams();
@@ -67,11 +68,10 @@ const BookDetailsPage = () => {
         const response = await fetchReviewsForBook(id);
         setReviews(response.data);
 
-
         // Check if the current user has reviewed this book
-        const userReview = response.data.some((review) => review.UserId === userId);
-        console.log(userId);
-        console.log(userReview);
+        const userReview = response.data.some(
+          (review) => review.UserId === userId
+        );
         setUserReviewed(userReview);
 
         // Calculate average rating
@@ -99,8 +99,8 @@ const BookDetailsPage = () => {
       await updateBookStatus(id, status);
       showSweetAlert({
         icon: "success",
-        title: "Status Updated",
-        text: "Book status updated successfully",
+        title: MESSAGES.BOOK_STATUS_UPDATE,
+        text: MESSAGES.BOOK_STATUS_UPDATE_MESSAGE,
       });
       setEditMode(false);
       navigate("/library");

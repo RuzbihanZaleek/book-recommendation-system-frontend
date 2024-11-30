@@ -1,8 +1,9 @@
 import { Typography, Card, Rating, Box } from "@mui/material";
 import Carousel from "react-multi-carousel";
+import { NAMES } from "../../utils/constants";
 
 const ReviewCarousel = ({ reviews }) => {
-    console.log(reviews);
+  console.log(reviews);
   const responsive = {
     desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
     tablet: { breakpoint: { max: 1024, min: 464 }, items: 2 },
@@ -12,7 +13,7 @@ const ReviewCarousel = ({ reviews }) => {
   return (
     <Box>
       <Typography variant="h5" sx={{ marginBottom: 2 }} fontStyle="italic">
-        Reviews
+        {NAMES.REVIEWS}
       </Typography>
       <Carousel
         responsive={responsive}

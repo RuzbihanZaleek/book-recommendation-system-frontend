@@ -5,6 +5,7 @@ import Loader from "../Layout/Loader";
 import { useNavigate } from "react-router-dom";
 import { showSweetAlert } from "../../utils/sweetAlertUtil";
 import backgroundImage from "../../assets/bg_image.jpg";
+import { MESSAGES, NAMES } from "../../utils/constants";
 
 const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,13 +17,13 @@ const SignUp = () => {
       const response = await signup(userData);
       showSweetAlert({
         icon: "success",
-        title: "Sign up successful!",
+        title: MESSAGES.SIGNUP_SUCCESS,
       });
       navigate("/login");
     } catch (error) {
       showSweetAlert({
         icon: "error",
-        title: error.message || "Login failed!",
+        title: error.message || MESSAGES.SIGNUP_FAIL,
       });
     } finally {
       setIsLoading(false);
@@ -41,7 +42,7 @@ const SignUp = () => {
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       <AuthForm
-        title="Sign Up"
+        title={NAMES.AUTH_FORM.SIGN_UP}
         submitHandler={handleSignUp}
         switchText="Already have an account?"
         switchHandler={switchToLogin}

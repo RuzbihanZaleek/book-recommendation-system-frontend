@@ -12,6 +12,7 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { handleBookReadStatus } from "../../utils/handleBookReadStatus";
+import { NAMES } from "../../utils/constants";
 
 const BookCard = ({
   book,
@@ -38,7 +39,7 @@ const BookCard = ({
           {book.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Author: {book.author}
+          {NAMES.BOOK.AUTHOR}: {book.author}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Genre: {book.genre}

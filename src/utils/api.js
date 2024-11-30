@@ -1,7 +1,8 @@
 import axios from "axios";
+import { API } from "./constants";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: API.BACKEND_URL,
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
@@ -24,7 +25,7 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => {
     const { status, statusCode, message, data } = response.data;
-    if (status === "success") {
+    if (status === API.STATUS) {
       return { status, statusCode, message, data };
     } else {
       return Promise.reject({ status, statusCode, message });
