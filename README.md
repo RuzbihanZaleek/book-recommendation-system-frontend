@@ -14,8 +14,6 @@ The frontend for the **Book Recommendation System** is built using React. It ena
 - **Routing**: React Router DOM
 - **Alerts**: SweetAlert2
 - **State Management**: Built-in React state and context
-- **Environment Configuration**: dotenv
-
 ---
 
 ## Setup and Installation Instructions
@@ -33,4 +31,14 @@ Ensure you have the following installed:
    ```bash
    git clone https://github.com/RuzbihanZaleek/book-recommendation-system-frontend.git
    cd book-recommendation-system-frontend
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server:**
+   ```bash
+   npm run dev
    ```
